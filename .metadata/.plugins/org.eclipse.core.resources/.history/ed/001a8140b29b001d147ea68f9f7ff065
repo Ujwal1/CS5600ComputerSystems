@@ -1,0 +1,26 @@
+/*
+ * queue.c
+ *
+ *  Created on: Jan 24, 2023
+ *      Author: ujwal
+ */
+#include "queue.h"
+#include<stdlib.h>
+
+// the function to put an element in a queue
+void enqueue(queue_t* queue, void* element) {
+	queue_t* newNode = (queue_t*)malloc(sizeof(queue_t));
+	newNode->data = element;
+	newNode->next = NULL;
+
+	//finding last node in queue
+	queue_t* last = queue;
+	while (last->next != NULL) {
+		last = last-> next;
+	}
+
+	last -> next = newNode;
+	newNode->prev = last;
+}
+
+

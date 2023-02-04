@@ -1,0 +1,17 @@
+ToolChainManager/order/n=0
+build.all.configs.enabled=false
+build.proj.ref.configs.enabled=false
+eclipse.preferences.version=1
+environment/workspace/MinGW/delimiter=\:
+environment/workspace/MinGW/operation=append
+environment/workspace/MinGW/value=mingw
+environment/workspace/PATH/delimiter=\:
+environment/workspace/PATH/operation=replace
+environment/workspace/PATH/value=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/usr/games\:/usr/local/games\:/snap/bin\:/snap/bin
+environment/workspace/append=true
+environment/workspace/appendContributed=true
+errorparser.default.ids=org.eclipse.cdt.autotools.core.ErrorParser;org.eclipse.cdt.core.GASErrorParser;org.eclipse.cdt.core.GLDErrorParser;org.eclipse.cdt.core.GCCErrorParser;org.eclipse.cdt.core.GmakeErrorParser;org.eclipse.cdt.core.VCErrorParser;org.eclipse.cdt.core.CWDLocator;org.eclipse.cdt.core.MakeErrorParser
+language.settings.providers.workspace.prefs.toggle=true
+macros/workspace=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\n<macros/>\n
+org.eclipse.cdt.core.showSourceFilesInBinaries=true
+org.eclipse.cdt.core.showSourceNotFoundEditor=all_time

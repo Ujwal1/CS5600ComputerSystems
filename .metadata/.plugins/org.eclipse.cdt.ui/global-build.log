@@ -1,0 +1,15 @@
+02:49:57 **** Incremental Build of configuration Debug for project ProcessQueue_Assignment3 ****
+make all 
+Building file: ../queuetest.c
+Invoking: Cross GCC Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"queuetest.d" -MT"queuetest.o" -o "queuetest.o" "../queuetest.c"
+Finished building: ../queuetest.c
+ 
+Building target: ProcessQueue_Assignment3
+Invoking: Cross GCC Linker
+gcc  -o "ProcessQueue_Assignment3" ./.metadata/.plugins/org.eclipse.cdt.make.core/specs.o  ./queue.o ./queuetest.o   
+Finished building target: ProcessQueue_Assignment3
+ 
+02:50:00 **** Incremental Build of configuration Debug for project ProcessQueue_Assignment3 ****
+make all 
+make: Nothing to be done for 'all'.

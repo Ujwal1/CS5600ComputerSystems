@@ -1,0 +1,64 @@
+/*
+ * GuptaU.CS5600.S23.c
+ *
+ *  Created on: Jan 31, 2023
+ *      Author: ujwal
+ */
+
+#include<stdio.h>
+#include<stdlib.h>
+#include<unistd.h>
+#include<pthread.h>
+
+#define ARR_SIZE 10
+int shared_array[10] = {0};
+
+void *worker(void *data) {
+	char *name = (char*)data;
+	pthread_t thread_id = pthread_self();
+
+	for (int i = 0; i < 120; i++) {
+		usleep(50000);
+		printf("Hi from thread name = %s and thread_id:%lu\n", name, thread_id);
+	}
+	printf("Thread %s with thread_id: %lu done!\n", name, thread_id);
+	return NULL;
+}
+
+void *worker_write(void* data) {
+	char *name = (char*)data;
+	for (int i = 0; i < ARR_SIZE; i++) {
+		usleep(10000);
+		shared_array[i] = i*5;
+		printf("Thread %s writing to shared_array[%d] = %d:", name, i, shared_array[i]);
+	}
+	return NULL;
+}
+
+void *worker_read(void* data) {
+	char *name = (char*)data;
+	for (int i = 0; i < ARR_SIZE; i++) {
+		usleep(10000);
+		printf("Thread %s reading from shared_array[%d] = %d", i, shared_array[i]);
+	}
+	return NULL;
+}
+
+int main(void) {
+	pthread_t th1, th2;
+	pthread_create(&th1, NULL, worker, "X");
+	pthread_create(&th2, NULL, worker, "Y");
+	sleep(1);
+	printf("====> Cancelling Thread Y with thread_id: %lu!!\n", (unsigned long) th2);
+	pthread_cancel(th2);
+	usleep(100000);
+	printf("====> Cancelling Thread X with thread_id: %lu!!\n", (unsigned long) th1);
+	pthread_cancel(th1);
+
+	printf("Demo for shared memory usage with one process with 'write' rights and other with just 'read'.");
+	pthread_create(&th1, NULL, worker_write, "X");
+	pthread_create(&th2, NULL, worker_read, "Y");
+
+	printf("Exiting from main program\n");
+	return 0;
+}

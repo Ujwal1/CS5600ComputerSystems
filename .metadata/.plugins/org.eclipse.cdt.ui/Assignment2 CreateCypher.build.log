@@ -1,0 +1,20 @@
+04:15:46 **** Incremental Build of configuration Debug for project Assignment2 CreateCypher ****
+make all 
+Building file: ../cipher.c
+Invoking: Cross GCC Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"cipher.d" -MT"cipher.o" -o "cipher.o" "../cipher.c"
+Finished building: ../cipher.c
+ 
+Building file: ../polybius.c
+Invoking: Cross GCC Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"polybius.d" -MT"polybius.o" -o "polybius.o" "../polybius.c"
+Finished building: ../polybius.c
+ 
+Building target: Assignment2 CreateCypher
+Invoking: Cross GCC Linker
+gcc  -o "Assignment2 CreateCypher" ./cipher.o ./polybius.o   
+Finished building target: Assignment2 CreateCypher
+ 
+
+04:15:46 Build Finished. 0 errors, 0 warnings. (took 394ms)
+

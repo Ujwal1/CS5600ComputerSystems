@@ -1,0 +1,10 @@
+CC=gcc
+CFLAGS=-Wall -Werror -std=c99
+
+all: CS5600.LearnC
+
+CS5600.LearnC: LastNameF.CS5600.LearnC.c
+	$(CC) $(CFLAGS) -o CS5600.LearnC LastNameF.CS5600.LearnC.c
+
+clean:
+	rm -f CS5600.LearnC

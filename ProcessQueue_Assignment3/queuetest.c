@@ -1,0 +1,70 @@
+/*
+ * queuetest.c
+ *
+ *  Created on: Jan 24, 2023
+ *      Author: ujwal
+ */
+#include <stdio.h>
+#include<stdlib.h>
+#include "queue.h"
+
+int main() {
+	// Create an empty queue
+	queue_t *queue = (queue_t*) malloc(sizeof(queue_t));
+	queue->next = NULL;
+	queue->prev = NULL;
+	// Create some process elements
+	process_t p1 = { 1, "Process 1", 3 };
+	process_t p2 = { 2, "Process 2", 2 };
+	process_t p3 = { 3, "Process 3", 1 };
+	process_t p4 = { 4, "Process 4", 4 };
+	process_t p5 = { 5, "Process 5", 5 };
+	// Add the process elements to the queue
+	enqueue(queue, &p1);
+	enqueue(queue, &p2);
+	enqueue(queue, &p3);
+	enqueue(queue, &p4);
+	enqueue(queue, &p5);
+	printf("Queue after adding all elements: \n");
+	queue_t *current = queue->next;
+	while (current != NULL) {
+		process_t *currentProcess = (process_t*) current->data;
+		printf("id: %d, name: %s, priority: %d\n", currentProcess->id,
+				currentProcess->name, currentProcess->priority);
+		current = current->next;
+	}
+	// Dequeue the front element
+	printf("\nDequeued element: ");
+	process_t *dequeuedProcess = (process_t*) dequeue(queue);
+	if (dequeuedProcess == NULL) {
+		printf("Queue is empty\n");
+	} else {
+		printf("id: %d, name: %s, priority: %d\n", dequeuedProcess->id,
+				dequeuedProcess->name, dequeuedProcess->priority);
+	}
+	// Dequeue the process with the highest priority
+	printf("\nDequeued highest priority process: ");
+	process_t *dequeuedHighestPriorityProcess = dequeueProcess(queue);
+	if (dequeuedHighestPriorityProcess == NULL) {
+		printf("Queue is empty\n");
+	} else {
+		printf("id: %d, name: %s, priority: %d\n",
+				dequeuedHighestPriorityProcess->id,
+				dequeuedHighestPriorityProcess->name,
+				dequeuedHighestPriorityProcess->priority);
+	}
+
+	// Print the current size of the queue
+	printf("\nQueue size: %d\n", qsize(queue));
+
+	// Cleanup
+	current = queue->next;
+	while (current != NULL) {
+		queue_t *next = current->next;
+		free(current);
+		current = next;
+	}
+	free(queue);
+	return 0;
+}
+

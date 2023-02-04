@@ -1,0 +1,15 @@
+02:33:41 **** Incremental Build of configuration Debug for project Assigment3_ProcessQueue ****
+make all 
+Building file: ../queuetest.c
+Invoking: Cross GCC Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"queuetest.d" -MT"queuetest.o" -o "queuetest.o" "../queuetest.c"
+Finished building: ../queuetest.c
+ 
+Building target: Assigment3_ProcessQueue
+Invoking: Cross GCC Linker
+gcc  -o "Assigment3_ProcessQueue" ./queue.o ./queuetest.o   
+Finished building target: Assigment3_ProcessQueue
+ 
+
+02:33:42 Build Finished. 0 errors, 0 warnings. (took 363ms)
+
